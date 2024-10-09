@@ -56,6 +56,10 @@ position = Vector2(386, 594)
 
 [node name="SpawnAreas" type="Node2D" parent="."]
 
-[node name="SpawnArea" parent="SpawnAreas" instance=ExtResource("3_dvhbg")]
+[node name="SpawnArea1" parent="SpawnAreas" instance=ExtResource("3_dvhbg")]
 position = Vector2(280, 630)
 scale = Vector2(3, 1)
+
+[node name="SpawnArea2" parent="SpawnAreas" instance=ExtResource("3_dvhbg")]
+position = Vector2(1330, 560)
+scale = Vector2(1, 2)

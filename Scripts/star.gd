@@ -25,12 +25,14 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" && is_safe:
 		is_safe = false
 		collected.emit()
 		$Sprite.texture.region = Rect2(840,420,70,70)
 
 func determine_position(possibleIdxs: Array[Array]) -> void: 
-	var chosenIdx = possibleIdxs[rng.randi_range(0,possibleIdxs.size())]
-	
+	if possibleIdxs.size() <= 0:
+		print("out of places to put em!!")
+		return  
+	var chosenIdx = possibleIdxs.pop_at(rng.randi_range(0,possibleIdxs.size()-1))
 	position = Vector2((chosenIdx[0] * 70) + 35,(chosenIdx[1] * 70) + 35)

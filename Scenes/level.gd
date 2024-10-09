@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 func add_star() -> void:
 	var star = star_scene.instantiate()
 	star.determine_position(possibleIdxs)
+	star.connect('collected', _on_star_collected)
 	$Stars.add_child(star)
 	
-	
+func _on_star_collected() -> void:
+	add_star()
