@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0lh0jkv5geo5"]
+
+[ext_resource type="Texture2D" uid="uid://lpngaisvnbwk" path="res://Art/sheet.png" id="1_taxhs"]
+[ext_resource type="Script" path="res://Scripts/star.gd" id="1_x4ch3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhch8"]
+radius = 21.095
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah5mi"]
+atlas = ExtResource("1_taxhs")
+region = Rect2(840, 350, 70, 70)
+
+[node name="Star" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_x4ch3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 512
+shape = SubResource("CircleShape2D_bhch8")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ah5mi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

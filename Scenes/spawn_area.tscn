@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://l3beyxso1ond"]
+
+[ext_resource type="Script" path="res://Scenes/spawn_area.gd" id="1_68eau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysxg4"]
+size = Vector2(70, 70)
+
+[node name="SpawnArea" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_68eau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36, 34)
+shape = SubResource("RectangleShape2D_ysxg4")

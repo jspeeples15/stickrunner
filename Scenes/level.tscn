@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8rmqy7dmpc8e"]
+
+[ext_resource type="Script" path="res://Scenes/level.gd" id="1_eefre"]
+[ext_resource type="PackedScene" uid="uid://cpxj16514voob" path="res://Scenes/player.tscn" id="1_xk8et"]
+[ext_resource type="PackedScene" uid="uid://l3beyxso1ond" path="res://Scenes/spawn_area.tscn" id="3_dvhbg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_altjb"]
+size = Vector2(1480, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l83n4"]
+size = Vector2(1456, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wouel"]
+size = Vector2(23, 748)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de3th"]
+size = Vector2(40.75, 747.625)
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_eefre")
+
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="Ceiling" type="StaticBody2D" parent="Borders"]
+position = Vector2(588, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Ceiling"]
+position = Vector2(146, -4.5)
+shape = SubResource("RectangleShape2D_altjb")
+
+[node name="Floor" type="StaticBody2D" parent="Borders"]
+position = Vector2(546, 670)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Floor"]
+position = Vector2(161, 62)
+shape = SubResource("RectangleShape2D_l83n4")
+
+[node name="RightWall" type="StaticBody2D" parent="Borders"]
+position = Vector2(1193, 277)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/RightWall"]
+position = Vector2(220, 63)
+shape = SubResource("RectangleShape2D_wouel")
+
+[node name="LeftWall" type="StaticBody2D" parent="Borders"]
+position = Vector2(-7, 327)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/LeftWall"]
+position = Vector2(-14, 23.8125)
+shape = SubResource("RectangleShape2D_de3th")
+
+[node name="Player" parent="." instance=ExtResource("1_xk8et")]
+position = Vector2(386, 594)
+
+[node name="SpawnAreas" type="Node2D" parent="."]
+
+[node name="SpawnArea" parent="SpawnAreas" instance=ExtResource("3_dvhbg")]
+position = Vector2(280, 630)
+scale = Vector2(3, 1)
